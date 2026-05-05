@@ -1,23 +1,21 @@
-# Lab 2.1 Findings: OpenLDAP
+# Lab 2.1 Findings: OpenLDAP Directory
 
-## 1. Directory Structure
-I have successfully configured the base DN as `dc=lab,dc=instasafe,dc=local` and created two organizational units (OUs): `People` and `Groups`.
+## 1. Directory Setup
+I configured the **slapd** service on my local environment. 
+- **Base DN:** `dc=lab,dc=instasafe,dc=local`
+- **Tooling:** Used `ldap-utils` (the **apt** package manager was used for installation).
 
-## 2. Verification Results
+## 2. Evidence of Success
+### User Search (ldapsearch)
+The command returned both Alice and Bob. This proves the directory is correctly indexed.
+![LDAP Users](../screenshots/ldap_users.png)
 
-### User Discovery
-Running `ldapsearch` correctly returns both Alice and Bob with their assigned `mail` attributes.
-![LDAP Users List](../screenshots/ldap_users.png)
-
-### Authentication (Bind) Success
-`ldapwhoami` returns a success message for Alice using the password `Alice@123`.
-![LDAP Bind Success](../screenshots/ldap_bind_success.png)
-
-### Authentication (Bind) Failure
-Using an incorrect password triggers **LDAP Error 49 (Invalid Credentials)**.
+### Authentication (Bind)
+- **Success:** `ldapwhoami` confirmed Alice can authenticate.
+- **Failure:** Incorrect passwords triggered **Error 49**, proving **Authentication** logic is active.
+![LDAP Success](../screenshots/ldap_bind_success.png)
 ![LDAP Error 49](../screenshots/ldap_error_49.png)
 
-## 3. InstaSafe Connection (Support Engineering)
-* **Base DN:** In InstaSafe, this tells the Controller exactly where to look for users in a customer's Active Directory[cite: 1].
-* **Bind DN:** This is the service account InstaSafe uses to talk to the AD server. If it lacks permissions, the sync fails[cite: 1].
-* **Error 49:** When this appears in InstaSafe logs, it means the service account password is wrong or expired[cite: 1].
+## 3. Support Engineering Insights
+- **Root Cause Analysis:** If the **InstaSafe Gateway** cannot reach this server, I would check **Port 389** status using `systemctl status slapd`.
+- **AD Sync:** In a production **ZTNA** environment, the **Controller** acts as the LDAP client, binding to this server to verify user identities before granting access to applications.
