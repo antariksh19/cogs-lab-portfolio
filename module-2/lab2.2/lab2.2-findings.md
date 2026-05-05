@@ -1,6 +1,6 @@
 # Lab 2.2: SAML 2.0 Identity Provider Configuration & Integration
 **Author:** Antariksh Mohapatra
-**Date:** May 2026
+**Date:** 5 May 2026
 **Module:** Identity and Access Management (InstaSafe Lab)
 
 ## 1. Objective
