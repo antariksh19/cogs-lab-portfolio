@@ -11,19 +11,19 @@ The objective of this lab was to deploy and configure Keycloak as a SAML 2.0 Ide
 
 ### 2.1 Keycloak Realm & Admin Console
 *Demonstrating Keycloak running with the `instasafe-lab` realm active.*
-![Keycloak Dashboard](../screenshots/keycloak_dashboard.png)
+![Keycloak Dashboard](../../screenshots/keycloak_dashboard.png)
 
 ### 2.2 SAML Client Configuration
 *Demonstrating the client settings, confirming the SAML protocol type and matching Client ID (`https://sp.instasafe.local/saml`).*
-![SAML Client Settings](../screenshots/saml_client_settings.png)
+![SAML Client Settings](../../screenshots/saml_client_settings.png)
 
 ### 2.3 Attribute Mappers Configuration
 *Demonstrating the configuration mapping internal user emails and group memberships to SAML assertion attributes.*
-![Attribute Mappers](../screenshots/attribute_mappers.png)
+![Attribute Mappers](../../screenshots/attribute_mappers.png)
 
 ### 2.4 IdP Metadata XML
 *Screenshot demonstrating the downloaded Keycloak IdP metadata XML used by the Service Provider to verify signatures.*
-![IdP Metadata XML](../screenshots/idp_metadata_xml.png)
+![IdP Metadata XML](../../screenshots/idp_metadata_xml.png)
 *(Alternatively, the raw XML snippet can be found in the lab repository).*
 
 ---

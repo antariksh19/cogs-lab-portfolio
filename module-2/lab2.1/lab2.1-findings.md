@@ -8,13 +8,13 @@ I configured the **slapd** service on my local environment.
 ## 2. Evidence of Success
 ### User Search (ldapsearch)
 The command returned both Alice and Bob. This proves the directory is correctly indexed.
-![LDAP Users](../screenshots/ldap_users.png)
+![LDAP Users](../../screenshots/ldap_users.png)
 
 ### Authentication (Bind)
 - **Success:** `ldapwhoami` confirmed Alice can authenticate.
-![LDAP Success](../screenshots/ldap_bind_success.png)
+![LDAP Success](../../screenshots/ldap_bind_success.png)
 - **Failure:** Incorrect passwords triggered **Error 49**, proving **Authentication** logic is active.
-![LDAP Error 49](../screenshots/ldap_error_49.png)
+![LDAP Error 49](../../screenshots/ldap_error_49.png)
 
 ## 3. Support Engineering Insights
 - **Root Cause Analysis:** If the **InstaSafe Gateway** cannot reach this server, I would check **Port 389** status using `systemctl status slapd`.
