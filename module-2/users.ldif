@@ -1,0 +1,23 @@
+dn: ou=People,dc=lab,dc=instasafe,dc=local
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=lab,dc=instasafe,dc=local
+objectClass: organizationalUnit
+ou: Groups
+
+dn: uid=alice,ou=People,dc=lab,dc=instasafe,dc=local
+objectClass: inetOrgPerson
+uid: alice
+cn: Alice Smith
+sn: Smith
+mail: alice@lab.instasafe.local
+userPassword: Alice@123
+
+dn: uid=bob,ou=People,dc=lab,dc=instasafe,dc=local
+objectClass: inetOrgPerson
+uid: bob
+cn: Bob Jones
+sn: Jones
+mail: bob@lab.instasafe.local
+userPassword: Bob@123
