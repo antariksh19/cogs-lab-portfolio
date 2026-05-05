@@ -12,8 +12,8 @@ The command returned both Alice and Bob. This proves the directory is correctly 
 
 ### Authentication (Bind)
 - **Success:** `ldapwhoami` confirmed Alice can authenticate.
-- **Failure:** Incorrect passwords triggered **Error 49**, proving **Authentication** logic is active.
 ![LDAP Success](../screenshots/ldap_bind_success.png)
+- **Failure:** Incorrect passwords triggered **Error 49**, proving **Authentication** logic is active.
 ![LDAP Error 49](../screenshots/ldap_error_49.png)
 
 ## 3. Support Engineering Insights
