@@ -33,7 +33,13 @@ If the configuration test fails or service goes offline:
 * **Status:** IN PROGRESS
 * **Outcome:** Success.
 * **Verification of Step 3:** Confirmed `nginx -t` returned "syntax is ok" and "test is successful" before reloading.
+
+    ![nginx success](../../screenshots/nginx_success.png)
+
 * **Verification of TLS:** `openssl` check confirmed `Protocol: TLSv1.3` and rejected TLS 1.2 connections.
+
+    ![openssl tls 1.3](../../screenshots/tls1.3.png)
+
 * **Rollback Test Execution:** 
     1. Manually removed a semicolon from `/etc/nginx/sites-available/lab-tls`.
     2. Ran `sudo nginx -t` and received error
@@ -41,3 +47,10 @@ If the configuration test fails or service goes offline:
     4. Verified recovery with `sudo nginx -t`: 
        "test is successful"
 * **Verification of TLS:** Final `openssl` check confirmed `Protocol: TLSv1.3`.
+
+    ![rollback execution](../../screenshots/rollback_execution.png)
+
+* **Screenshot: Git log screenshot showing full commit trail**
+
+    ![git log](../../screenshots/git_log.png)
+
