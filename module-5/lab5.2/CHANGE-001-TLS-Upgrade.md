@@ -34,3 +34,10 @@ If the configuration test fails or service goes offline:
 * **Outcome:** Success.
 * **Verification of Step 3:** Confirmed `nginx -t` returned "syntax is ok" and "test is successful" before reloading.
 * **Verification of TLS:** `openssl` check confirmed `Protocol: TLSv1.3` and rejected TLS 1.2 connections.
+* **Rollback Test Execution:** 
+    1. Manually removed a semicolon from `/etc/nginx/sites-available/lab-tls`.
+    2. Ran `sudo nginx -t` and received error
+    3. Executed rollback using `lab-tls.backup`.
+    4. Verified recovery with `sudo nginx -t`: 
+       "test is successful"
+* **Verification of TLS:** Final `openssl` check confirmed `Protocol: TLSv1.3`.
