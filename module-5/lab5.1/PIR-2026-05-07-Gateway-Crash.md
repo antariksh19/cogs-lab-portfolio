@@ -8,7 +8,7 @@
 At 12:48 IST, the Nginx gateway became unresponsive, leading to a total loss of access for all lab users. The incident was detected via Uptime Kuma and investigated through Prometheus. Service was restored by manually restarting the Nginx process after identifying a critical resource exhaustion event.
 
 ## Evidence of Detection
-![Uptime Kuma Red Alert](../screenshots/uptime-kuma-red.png)
+![Uptime Kuma Red Alert](../../screenshots/uptime-kuma-red.png)
 
 ## Timeline
 | Time (IST) | Event |
@@ -24,8 +24,8 @@ At 12:48 IST, the Nginx gateway became unresponsive, leading to a total loss of 
 
 ## Resource Analysis
 Below is the Prometheus data captured during the investigation phase:
-![Prometheus Memory Spike](../screenshots/prometheus-memory.png)
-![Prometheus CPU Spike](../screenshots/prometheus-cpu.png)
+![Prometheus Memory Spike](../../screenshots/prometheus-memory.png)
+![Prometheus CPU Spike](../../screenshots/prometheus-cpu.png)
 
 ## Root Cause
 The technical root cause was **Resource Exhaustion**. High memory utilization (89%) caused the Nginx process to hang and fail to respond to monitoring heartbeats.
@@ -41,7 +41,7 @@ The technical root cause was **Resource Exhaustion**. High memory utilization (8
 3. Verified recovery through Uptime Kuma heartbeats.
 
 ## Recovery Verification
-![Uptime Kuma Green Recovery](../screenshots/uptime-kuma-green.png)
+![Uptime Kuma Green Recovery](../../screenshots/uptime-kuma-green.png)
 
 ## Prevention Actions
 * **Action**: Configure Grafana alerts for Memory usage exceeding 80%.
