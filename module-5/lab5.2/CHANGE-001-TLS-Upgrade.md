@@ -28,3 +28,9 @@ If the configuration test fails or service goes offline:
 
 ## 5. Verification Plan
 * Run `curl -I -v --tlsv1.3 https://localhost` (if certificate is present) or check Uptime Kuma for a green status.
+
+## 6. Implementation Results
+* **Status:** IN PROGRESS
+* **Outcome:** Success.
+* **Verification of Step 3:** Confirmed `nginx -t` returned "syntax is ok" and "test is successful" before reloading.
+* **Verification of TLS:** `openssl` check confirmed `Protocol: TLSv1.3` and rejected TLS 1.2 connections.
