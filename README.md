@@ -46,3 +46,20 @@ This repository contains the end-to-end technical documentation and evidence for
 * **Artifacts:**
     * Change Request (CR)
 
+### Capstone Lab: Mini Zero Trust Architecture (ZTNA)
+* **Objective:** Design and deploy a mini enterprise-style Zero Trust architecture using secure tunnels, reverse proxying, TLS encryption, and infrastructure monitoring.
+* **Key Tasks:**
+    * Configured a **WireGuard VPN tunnel** between two cloud virtual machines for encrypted private communication.
+    * Deployed a segmented backend application accessible only through the WireGuard tunnel.
+    * Configured **Nginx** as a public reverse proxy gateway for secure access to private services.
+    * Enabled **TLS 1.3 encryption** with self-signed certificates for HTTPS traffic protection.
+    * Integrated **Uptime Kuma** for real-time service monitoring and availability checks.
+    * Performed infrastructure troubleshooting involving Docker cleanup, swap provisioning, JVM optimization, and disk recovery under constrained free-tier resources.
+    * Attempted integration of **Keycloak IAM** for identity-aware access control simulation.
+* **Artifacts:**
+    * Architecture Diagram
+    * TLS Validation Logs
+    * Uptime Kuma Dashboard
+    * WireGuard Connectivity Validation
+    * Infrastructure Reflection Report
+
