@@ -16,7 +16,6 @@ def saml_login():
     
     redirect_url = f'{idp_url}?SAMLRequest={urllib.parse.quote(saml_request)}'
     
-    # Print the exact URL to your terminal so we can verify it!
     print("\n--- GENERATED REDIRECT URL ---")
     print(redirect_url)
     print("------------------------------\n")

@@ -1,6 +1,6 @@
 # Lab 4.1 Findings: GitHub Support Desk
 **Author:** Antariksh Mohapatra
-
+**Date:** May 7, 2026
 
 ---
 
@@ -15,7 +15,7 @@ I have successfully configured the `cogs-support-lab-tickets` repository to func
 ---
 
 ## 2. Mock Ticket Creation
-Three tickets were created to simulate a real-world support backlog. Each ticket followed a structured template to ensure technical context—such as customer segment, impact, and environment—was captured accurately.
+Three tickets were created to simulate a real-world support backlog. Each ticket followed a structured template to ensure technical context—such as customer segment, impact, and environment was captured accurately.
 
 1. **Ticket 1 (P2):** MFA SMS OTP failure affecting 25 users in a financial institution.
 2. **Ticket 2 (P3):** User locked out after password change, suspected AD sync delay.
@@ -25,7 +25,7 @@ Three tickets were created to simulate a real-world support backlog. Each ticket
 
 ---
 
-## 3. Full Ticket Lifecycle Simulation [+20 pts]
+## 3. Full Ticket Lifecycle Simulation 
 I executed the complete support lifecycle for **Ticket 1** to demonstrate professional incident handling and escalation procedures.
 
 * **Triage:** Added an internal investigation note identifying bulk REJECTED status codes in the Kaleyra dashboard.

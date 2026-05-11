@@ -5,7 +5,7 @@
 ---
 
 ## 1. Monitor Type Mapping
-In this lab, I deployed Uptime Kuma to simulate enterprise monitoring.Below is the mapping of the monitor types used in this lab to their equivalents in **Site24x7**, as used in production environments
+In this lab, I deployed Uptime Kuma to simulate enterprise monitoring. Below is the mapping of the monitor types used in this lab to their equivalents in **Site24x7**, as used in production environments
 
 | Uptime Kuma Type | Site24x7 Equivalent | Lab Use Case |
 | :--- | :--- | :--- |

@@ -10,15 +10,18 @@ The objective of this lab was to build and verify a Time-based One-Time Password
 
 ### 2.1 MFA Enrollment (QR Code)
 *The generated base32 secret was encoded into a provisioning URI and rendered as a QR code for authenticator app enrollment.*
+
 <img src="../../screenshots/totp_qr.png" alt="MFA Sync mobile" width="180" />
 
 ### 2.2 Synchronized Authentication
 *Side-by-side verification showing the Python script's generated OTP matching the live code on the mobile authenticator app.*
+
 ![MFA Sync terminal](../../screenshots/mfa_sync_comparison_terminal.png)
 <img src="../../screenshots/mfa_sync_comparison_mobile.png" alt="MFA Sync mobile" width="180" />
 
 ### 2.3 Time-Rotation Demonstration
 *Proof that the TOTP rotates every 30 seconds. The script captured one code, waited 31 seconds, and successfully generated a new, unique code.*
+
 ![MFA Rotation Proof](../../screenshots/mfa_rotation_demo.png)
 
 ---

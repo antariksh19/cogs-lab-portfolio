@@ -7,7 +7,6 @@
 The objective of this lab was to deploy and configure Keycloak as a SAML 2.0 Identity Provider (IdP) and successfully establish a secure Single Sign-On (SSO) federation with a custom Python Flask Service Provider (SP). This included configuring realms, users, clients, and attribute mappers to pass authorization data securely.
 
 ## 2. Evidence of Completion (Screenshots)
-*(Note to reviewer: Screenshots demonstrating successful configuration are stored in the repository's `screenshots` directory.)*
 
 ### 2.1 Keycloak Realm & Admin Console
 *Demonstrating Keycloak running with the `instasafe-lab` realm active.*
@@ -24,7 +23,7 @@ The objective of this lab was to deploy and configure Keycloak as a SAML 2.0 Ide
 ### 2.4 IdP Metadata XML
 *Screenshot demonstrating the downloaded Keycloak IdP metadata XML used by the Service Provider to verify signatures.*
 ![IdP Metadata XML](../../screenshots/idp_metadata_xml.png)
-*(Alternatively, the raw XML snippet can be found in the lab repository).*
+*(The raw XML snippet can be found in the lab repository).*
 
 ---
 

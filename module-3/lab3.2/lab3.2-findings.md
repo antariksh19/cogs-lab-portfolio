@@ -1,10 +1,12 @@
 # Lab 3.2 Findings: Prometheus & Grafana
 **Author:** Antariksh Mohapatra
+**Date:** May 7, 2026
 
 ---
 
 ## 1. Container Status Check
 All monitoring services are successfully deployed and running in a healthy state.
+
 ![Docker Compose Status](../../screenshots/lab3-2-docker-ps.png)
 
 ---

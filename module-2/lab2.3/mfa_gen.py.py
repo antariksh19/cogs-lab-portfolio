@@ -1,6 +1,6 @@
 import pyotp, qrcode
 
-# Generate a secret key (this is what gets embedded in the QR code)
+# Generate a secret key (this gets embedded in the QR code)
 secret = pyotp.random_base32()
 print(f'TOTP Secret: {secret}')
 
