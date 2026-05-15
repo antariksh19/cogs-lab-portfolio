@@ -4,7 +4,9 @@
 **Module:** Identity and Access Management (InstaSafe Lab)
 
 ## 1. Objective
-The objective of this lab was to build and verify a Time-based One-Time Password (TOTP) system from scratch. This experiment demonstrates the mechanics of standardized MFA (RFC 6238) and illustrates why TOTP provides a higher security posture than traditional SMS-based OTPs by eliminating network-based interception risks.
+The objective of this lab was to build and verify a Time-based One-Time Password (TOTP) system from scratch. This experiment demonstrates the mechanics of standardized MFA and illustrates why TOTP provides a higher security posture than traditional SMS-based OTPs by eliminating network-based interception risks. 
+
+*(Implementation mechanics cross-referenced with the official [IETF RFC 6238 TOTP Specifications](https://datatracker.ietf.org/doc/html/rfc6238)).*
 
 ## 2. Evidence of Success
 
@@ -29,7 +31,9 @@ The objective of this lab was to build and verify a Time-based One-Time Password
 ## 3. Technical Analysis & Troubleshooting
 
 ### 3.1 TOTP vs. SMS OTP
-Unlike SMS OTPs, which are susceptible to SIM swapping and SS7 interception, TOTP relies on a "Shared Secret" and "Time Synchronization." Because the code is generated locally on the device, no sensitive authentication data travels over the cellular network during the login challenge.
+Unlike SMS OTPs, which are susceptible to SIM swapping and SS7 interception, TOTP relies on a "Shared Secret" and "Time Synchronization." Because the code is generated locally on the device, no sensitive authentication data travels over the cellular network during the login challenge. 
+
+*(For a detailed breakdown of why SMS-based authentication is vulnerable to interception, I referenced [Cloudflare's Guide to Multi-Factor Authentication](https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/)).*
 
 ### 3.2 Enterprise Troubleshooting: TOTP Failures
 **Question:** What causes TOTP failure in an enterprise? List 3 root causes and 1 diagnostic step each.
@@ -37,7 +41,9 @@ Unlike SMS OTPs, which are susceptible to SIM swapping and SS7 interception, TOT
 **Answer:**
 
 1. **Root Cause: Time Drift**
-   * **Description:** The TOTP algorithm is strictly time-dependent. If the user's phone clock or the authentication server's clock is off by more than 30-60 seconds, the generated codes will not match.
+   * **Description:** The TOTP algorithm is strictly time-dependent. If the user's phone clock or the authentication server's clock is off by more than 30-60 seconds, the generated codes will not match. 
+   
+   (Troubleshooting methodology for synchronization issues aligned with [AWS IAM Virtual MFA Synchronization Guidelines](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html)).*
    * **Diagnostic Step:** Compare the system time on the server with a reliable NTP source and ensure the user's mobile device is set to "Set Time Automatically."
 
 2. **Root Cause: Secret Mismatch**

@@ -5,14 +5,18 @@
 ---
 
 ## 1. Container Status Check
-All monitoring services are successfully deployed and running in a healthy state.
+All monitoring services are successfully deployed and running in a healthy state via Docker Compose. 
+
+*(Deployment architecture aligned with the [Official Docker Compose Documentation](https://docs.docker.com/compose/)).*
 
 ![Docker Compose Status](../../screenshots/lab3-2-docker-ps.png)
 
 ---
 
 ## 2. Prometheus Metrics & Queries 
-I have configured Prometheus to track four key infrastructure metrics. Each query is returning live data from the Node Exporter:
+I have configured Prometheus to track four key infrastructure metrics. Each query uses standard PromQL to return live aggregated data from the Node Exporter. 
+
+*(Syntax and metric aggregation cross-referenced with the [Official Prometheus PromQL Documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/)).*
 
 1. **CPU Usage:** `100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)`
 
@@ -33,7 +37,7 @@ I have configured Prometheus to track four key infrastructure metrics. Each quer
 ---
 
 ## 3. Grafana Dashboard 
-I built a professional dashboard with 3 panels (CPU, RAM, and Disk) to provide at-a-glance infrastructure health.
+I built a professional dashboard with 3 panels (CPU, RAM, and Disk) to provide at-a-glance infrastructure health and visualize the time-series data scraped by Prometheus.
 
 ![Grafana Dashboard](../../screenshots/lab3-2-grafana.png)
 
@@ -44,8 +48,10 @@ I built a professional dashboard with 3 panels (CPU, RAM, and Disk) to provide a
 **Question:** What is the difference between what Prometheus/Grafana shows and what SigNoz shows? When would you use each during a P1 incident?
 
 **Answer:**
-Prometheus and Grafana focus on **Infrastructure Monitoring**. They track system-level vitals like CPU, RAM, and Disk health. **SigNoz** is an **Application Performance Monitoring (APM)** tool that focuses on distributed traces, request latency, and code-level errors.
+Prometheus and Grafana focus on **Infrastructure Monitoring**. They track system-level vitals like CPU, RAM, and Disk health. **SigNoz** is an **Application Performance Monitoring (APM)** tool that focuses on distributed traces, request latency, and code-level errors. 
+
+*(To review the architectural distinction between infrastructure telemetry and distributed tracing, I referenced the [AWS Guide to Application Performance Monitoring](https://aws.amazon.com/what-is/application-performance-monitoring/)).*
 
 **During a P1 Incident:**
-* I would use **Prometheus/Grafana** first to see if the entire server is down, out of memory, or if the disk is 100% full (Infrastructure failure).
+* I would use **Prometheus/Grafana** first to see if the underlying server is down, out of memory, or if the disk is 100% full (Infrastructure failure).
 * I would use **SigNoz** if the infrastructure looks healthy but users are still experiencing errors or slowness. SigNoz helps me trace the specific microservice or database query that is failing within the application code.

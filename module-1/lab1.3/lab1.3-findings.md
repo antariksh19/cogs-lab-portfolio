@@ -5,18 +5,24 @@
 ---
 
 ## 1. ZTNA Component Mapping
-WireGuard provides a simplified, open-source model of how enterprise Zero Trust Network Access (ZTNA) operates. Based on the architecture built in this lab, here is how the WireGuard components map directly to the InstaSafe ZTNA architecture:
+WireGuard provides a simplified, open-source model of how enterprise Zero Trust Network Access (ZTNA) operates. 
 
-*   **WireGuard Client (VM2):** This maps to the **InstaSafe Agent**. It resides on the end-user's machine and initiates the secure connection.
-*   **WireGuard Server (VM1):** This maps to the **InstaSafe Gateway**. It acts as the secure enforcement point that listens for incoming agent connections and routes them to internal resources.
-*   **Encrypted UDP Tunnel:** This maps directly to the secure **Point-to-Point Data Tunnel** established between the user's Agent and the Gateway, ensuring traffic cannot be intercepted.
-*   **Public/Private Key Pairs:** These act as the **InstaSafe Controller and Certificates**. The exchange of public keys handles the identity verification and authorization phase, ensuring only trusted devices can establish the tunnel.
+*(For a foundational, vendor-neutral breakdown of this architecture, I referenced [Cloudflare's Guide to ZTNA](https://www.cloudflare.com/learning/access-management/what-is-ztna/)).
+
+Based on the architecture built in this lab, here is how the WireGuard components map directly to the InstaSafe ZTNA architecture:
+* **WireGuard Client (VM2):** This maps to the **InstaSafe Agent**. It resides on the end-user's machine and initiates the secure connection.
+* **WireGuard Server (VM1):** This maps to the **InstaSafe Gateway**. It acts as the secure enforcement point that listens for incoming agent connections and routes them to internal resources.
+* **Encrypted UDP Tunnel:** This maps directly to the secure **Point-to-Point Data Tunnel** established between the user's Agent and the Gateway, ensuring traffic cannot be intercepted.
+* **Public/Private Key Pairs:** These act as the **InstaSafe Controller and Certificates**. The exchange of public keys handles the identity verification and authorization phase, ensuring only trusted devices can establish the tunnel.
 
 ---
 
 ## 2. Infrastructure Notes & Troubleshooting
 - **Cloud Provider:** AWS (EC2)
-- **Networking:** Overcame a routing issue by explicitly opening UDP port 51820 in the AWS Security Group, which is required because WireGuard relies entirely on connectionless UDP traffic.
+- **Networking:** Overcame a routing issue by explicitly opening UDP port 51820 in the AWS Security Group, which is required because WireGuard relies entirely on connectionless UDP traffic. 
+
+*(To understand the performance and security benefits of this specific design, see the [Official WireGuard Cryptokey Routing Documentation](https://www.wireguard.com/#cryptokey-routing)).*
+
 - **Packet Capture:** The default interface `eth0` was not present on the AWS Ubuntu instance. The capture was successfully executed by identifying the correct active network interface (`ens5`) using the `ip a` command.
 
 ---
@@ -36,6 +42,8 @@ The following screenshots prove the tunnel's functionality and end-to-end encryp
 ![Ping Success](../../screenshots/ping-success.png)
 
 ### 3.3 Encryption Proof
-*Screenshot of `sudo tcpdump -i ens5 -n udp port 51820` showing encrypted, unreadable packet payloads while a ping was active.*
+Screenshot of `sudo tcpdump -i ens5 -n udp port 51820` showing encrypted, unreadable packet payloads while a ping was active. 
+
+(Packet analysis methodology cross-referenced with the [official tcpdump manual](https://www.tcpdump.org/manpages/tcpdump.1.html)).*
 
 ![TCPDump Encrypted Traffic](../../screenshots/tcpdump-encrypted.png)

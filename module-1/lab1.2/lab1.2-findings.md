@@ -5,12 +5,14 @@
 ---
 
 ## 1. Nginx Service Verification
-To confirm Nginx is serving both HTTP and HTTPS traffic, I executed `curl` commands for both protocols.
+To confirm Nginx is serving both HTTP and HTTPS traffic, I executed `curl` commands for both protocols. 
+
+*(Architecture cross-referenced with the [Official Nginx Reverse Proxy Admin Guide](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)).*
 
 - **HTTP Request:** `curl http://54.162.101.229`
 - **HTTPS Request:** `curl -k https://54.162.101.229`
 
-![HTTP Resut](../../screenshots/http_result.png)
+![HTTP Result](../../screenshots/http_result.png)
 
 ![HTTPS Result](../../screenshots/https_result.png)
 
@@ -44,8 +46,9 @@ Using `openssl s_client -connect 54.162.101.229:443`, I extracted the following 
 ## 4. Technical Explanation
 **Question:** Why does `curl` without `-k` fail? What would need to change to make it succeed?
 
-**Answer:** 
-The `curl` command fails without the `-k` (insecure) flag because the certificate presented by the server is **self-signed**. Since this certificate was not issued by a globally recognized Certificate Authority (CA) found in the system's trust store, `curl` cannot verify the "Chain of Trust" and aborts the connection for safety.
+**Answer:** The `curl` command fails without the `-k` (insecure) flag because the certificate presented by the server is **self-signed**. Since this certificate was not issued by a globally recognized Certificate Authority (CA) found in the system's trust store, `curl` cannot verify the "Chain of Trust" and aborts the connection for safety. 
+
+*(For a detailed explanation of how clients verify this chain, see [Cloudflare's Guide to the TLS Handshake](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/)).*
 
 To make the connection succeed without `-k`, one of two things would need to change:
 1. **Use a Trusted CA:** The server would need a certificate issued by a provider like Let's Encrypt or DigiCert.

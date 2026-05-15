@@ -10,18 +10,22 @@ The objective of this lab was to deploy and configure Keycloak as a SAML 2.0 Ide
 
 ### 2.1 Keycloak Realm & Admin Console
 *Demonstrating Keycloak running with the `instasafe-lab` realm active.*
+
 ![Keycloak Dashboard](../../screenshots/keycloak_dashboard.png)
 
 ### 2.2 SAML Client Configuration
 *Demonstrating the client settings, confirming the SAML protocol type and matching Client ID (`https://sp.instasafe.local/saml`).*
+
 ![SAML Client Settings](../../screenshots/saml_client_settings.png)
 
 ### 2.3 Attribute Mappers Configuration
 *Demonstrating the configuration mapping internal user emails and group memberships to SAML assertion attributes.*
+
 ![Attribute Mappers](../../screenshots/attribute_mappers.png)
 
 ### 2.4 IdP Metadata XML
 *Screenshot demonstrating the downloaded Keycloak IdP metadata XML used by the Service Provider to verify signatures.*
+
 ![IdP Metadata XML](../../screenshots/idp_metadata_xml.png)
 *(The raw XML snippet can be found in the lab repository).*
 
@@ -32,6 +36,8 @@ The objective of this lab was to deploy and configure Keycloak as a SAML 2.0 Ide
 ### 3.1 Attribute Mapper Explanation
 In a SAML SSO flow, the Identity Provider (Keycloak) authenticates the user, but the Service Provider (the Python app) needs to know *who* logged in and *what* they are allowed to do. 
 
+*(To review the standardized XML communication flow between an IdP and SP, I referenced [Cloudflare's Guide to SAML Protocol](https://www.cloudflare.com/learning/access-management/what-is-saml/)).*
+
 Attribute mappers act as translators. They take Keycloak's internal user data (like a user's email address or their `support-team` group membership) and package them into standardized XML `<saml:Attribute>` tags inside the SAML Assertion. Without these mappers, the Service Provider would only know a login occurred, but would lack the contextual data needed to enforce Role-Based Access Control (RBAC) or load the correct user profile.
 
 ### 3.2 SSO Troubleshooting Scenario
@@ -40,7 +46,9 @@ Attribute mappers act as translators. They take Keycloak's internal user data (l
 **Answer:**
 If a Service Provider application throws an "Attribute Error" after a successful login, it means the SAML Assertion was delivered, but it was missing the specific data points (like `email`, `role`, or `firstName`) that the application requires to map the user's session. 
 
-To troubleshoot this in Keycloak, I would immediately check the **Client Scopes / Mappers** configuration to ensure the data is actually being injected into the assertion.
+To troubleshoot this in Keycloak, I would immediately check the **Client Scopes / Mappers** configuration to ensure the data is actually being injected into the assertion. 
+
+*(Troubleshooting workflow aligned with the [Official Keycloak Server Administration Guide on Client Scopes](https://www.keycloak.org/docs/latest/server_admin/#_client_scopes)).*
 
 **Specific Menu Path to Check:**
 1. Log into the Keycloak Admin Console.

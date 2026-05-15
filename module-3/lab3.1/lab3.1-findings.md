@@ -5,7 +5,11 @@
 ---
 
 ## 1. Monitor Type Mapping
-In this lab, I deployed Uptime Kuma to simulate enterprise monitoring. Below is the mapping of the monitor types used in this lab to their equivalents in **Site24x7**, as used in production environments
+In this lab, I deployed Uptime Kuma to simulate enterprise synthetic monitoring. 
+
+*(To review the operational distinction between basic network pings and application-layer health monitoring, I referenced [Cloudflare's Guide to Application Availability](https://www.cloudflare.com/learning/performance/glossary/application-availability/)).*
+
+Below is the mapping of the monitor types used in this lab to their equivalents in **Site24x7**, as used in production environments:
 
 | Uptime Kuma Type | Site24x7 Equivalent | Lab Use Case |
 | :--- | :--- | :--- |
@@ -18,7 +22,9 @@ In this lab, I deployed Uptime Kuma to simulate enterprise monitoring. Below is 
 ## 2. Technical Analysis
 **Question:** Which monitor type would you use to monitor an InstaSafe Gateway?
 
-**Answer:** To monitor an **InstaSafe Gateway**, I would primarily use a **TCP Port Monitor** configured for the specific tunnel port (such as UDP 51820 for WireGuard) and an **HTTP(S) Monitor** to track the health-check endpoint of the gateway application. This ensures the service is not only reachable over the network but is actively processing application requests.
+**Answer:** To monitor an **InstaSafe Gateway**, I would primarily use a **TCP Port Monitor** configured for the specific tunnel port (such as UDP 51820 for WireGuard) and an **HTTP(S) Monitor** to track the health-check endpoint of the gateway application. This ensures the service is not only reachable over the network but is actively processing application requests. 
+
+*(Endpoint verification methodology aligned with the [Official Nginx Active Health Checks Documentation](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-health-check/)).*
 
 * **Monitor Dashboard (Healthy):** ![Healthy Dashboard](../../screenshots/lab3-1-green.png)
 
